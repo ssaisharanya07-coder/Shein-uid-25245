@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHEIN India - Men's Fashion</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    body { background-color: #fcfcfc; color: #111; }
+    
+    /* Global Container Sizing */
+    .wrapper { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+    
+    /* Elegant Header Layer */
+    header { background: #fff; border-bottom: 1px solid #f0f0f0; padding: 16px 0; position: sticky; top: 0; z-index: 100; }
+    .header-flex { display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-size: 26px; font-weight: 900; letter-spacing: 3px; cursor: pointer; }
+    nav { display: flex; gap: 28px; }
+    nav a { text-decoration: none; color: #111; font-size: 13px; font-weight: 700; letter-spacing: 1px; transition: color 0.2s; }
+    nav a:hover, .active-tab { color: #ff3f6c; }
+    .search-bar { display: flex; align-items: center; background: #f5f5f6; border-radius: 4px; padding: 6px 12px; width: 240px; }
+    .search-bar input { background: transparent; border: none; outline: none; font-size: 13px; width: 100%; color: #333; }
+    .icons { display: flex; gap: 20px; font-size: 18px; cursor: pointer; color: #222; }
+
+    /* Modern Hero Image Banner Layout */
+    .hero-container { margin: 24px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.04); position: relative; aspect-ratio: 16 / 5; background: #e0e0e0; }
+    .hero-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 60%); display: flex; align-items: center; padding: 0 40px; color: #fff; }
+    .hero-text h1 { font-size: 32px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+    .hero-text p { font-size: 14px; color: #ddd; margin-bottom: 12px; }
+    .hero-btn { background: #fff; color: #111; border: none; padding: 8px 20px; font-size: 12px; font-weight: 700; border-radius: 4px; cursor: pointer; transition: transform 0.2s; }
+    .hero-btn:hover { transform: scale(1.03); }
+
+    /* Minimalist Digital Voucher Grid */
+    .voucher-row { display: flex; gap: 12px; margin-bottom: 32px; }
+    .voucher { flex: 1; background: #f4fff9; border: 1px dashed #a3e2bc; border-radius: 8px; padding: 14px; text-align: center; }
+    .voucher h4 { font-size: 14px; color: #145a32; font-weight: 700; }
+    .voucher p { font-size: 11px; color: #1e8449; margin-top: 2px; }
+    .voucher.promo-code { background: #fff3cd; border-color: #ffeeba; }
+    .voucher.promo-code h4 { color: #856404; }
+    .voucher.promo-code p { color: #856404; font-weight: bold; }
+
+    /* Grid Layout Architectures */
+    .section-title { font-size: 16px; font-weight: 800; letter-spacing: 1px; margin-bottom: 16px; text-transform: uppercase; border-left: 3px solid #111; padding-left: 10px; }
+    .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 36px; }
+    .style-box { aspect-ratio: 3 / 4; border-radius: 8px; background: #eee; position: relative; overflow: hidden; cursor: pointer; }
+    .style-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+    .style-box:hover img { transform: scale(1.05); }
+    .style-box span { position: absolute; bottom: 12px; left: 8px; right: 8px; background: rgba(255,255,255,0.95); text-align: center; padding: 6px 0; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+
+    /* Premium Rounded Subcategory Profile Layout */
+    .circle-wrap { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 36px; overflow-x: auto; padding-bottom: 8px; }
+    .circle-card { text-align: center; min-width: 75px; cursor: pointer; }
+    .circle-frame { width: 70px; height: 70px; border-radius: 50%; background: #eee; margin: 0 auto 8px; overflow: hidden; border: 2px solid #fff; box-shadow: 0 3px 10px rgba(0,0,0,0.05); }
+    .circle-frame img { width: 100%; height: 100%; object-fit: cover; }
+    .circle-card p { font-size: 11px; font-weight: 600; color: #444; }
+
+    /* Curated Editorial Collection Arrays */
+    .editorial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 40px; }
+    .editorial-box { aspect-ratio: 1 / 1; border-radius: 10px; background: #e5e5e5; position: relative; overflow: hidden; cursor: pointer; }
+    .editorial-box img { width: 100%; height: 100%; object-fit: cover; }
+    .editorial-box .meta-layer { position: absolute; inset: 0; background: linear-gradient(transparent 50%, rgba(0,0,0,0.8)); display: flex; align-items: flex-end; padding: 16px; }
+    .editorial-box h3 { color: #fff; font-size: 14px; font-weight: 700; letter-spacing: 0.5px; line-height: 1.3; }
+
+    /* Exact Trust Infrastructure requested from Screenshot */
+    .trust-strip { display: flex; justify-content: space-around; padding: 24px 0; background: #fff; border-top: 1px solid #eee; border-bottom: 1px solid #eee; margin-bottom: 40px; text-align: center; }
+    .trust-element { display: flex; flex-direction: column; align-items: center; font-size: 11px; font-weight: 800; letter-spacing: 1px; color: #333; }
+    .trust-graphics { font-size: 32px; margin-bottom: 6px; }
+
+    /* Deep Corporate Premium Footer Framework */
+    footer { background: #111; color: #fff; padding: 48px 0 24px; font-size: 13px; }
+    .footer-columns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; margin-bottom: 40px; }
+    .footer-columns h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; color: #888; }
+    .footer-columns a { display: block; color: #bbb; text-decoration: none; margin-bottom: 10px; font-size: 13px; transition: color 0.2s; }
+    .footer-columns a:hover { color: #fff; }
+    .footer-base { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #222; padding-top: 20px; color: #666; font-size: 11px; }
+    .gateways span { background: #222; color: #eee; padding: 4px 8px; border-radius: 3px; font-size: 10px; font-weight: 700; margin-right: 6px; letter-spacing: 0.5px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="wrapper header-flex">
+      <div class="logo">SHEIN</div>
+      <nav><a href="#">WOMEN</a><a href="#" class="active-tab">MEN</a><a href="#">TRENDING</a></nav>
+      <div class="search-box"><div class="search-bar"><input type="text" placeholder="Search clothes, brands..."></div></div>
+      <div class="icons">♡ 🛒 👤</div>
+    </div>
+  </header>
+
+  <div class="wrapper">
+    <section class="hero-container">
+      <img class="hero-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWR4fv7YppM3bWYP1BvX7Tyi7CvgWd6U941w&s" alt="Hero Banner">
+      <div class="hero-overlay">
+        <div class="hero-text"><h1>LUXURY IN SUBTLE TONES</h1><p>Premium summer updates starting from ₹349</p><button class="hero-btn">SHOP COLLECTION</button></div>
+      </div>
+    </section>
+
+    <section class="voucher-row">
+      <div class="voucher"><h4>Flat ₹100 OFF</h4><p>On orders above ₹699</p></div>
+      <div class="voucher"><h4>Flat ₹200 OFF</h4><p>On orders above ₹1299</p></div>
+      <div class="voucher"><h4>Flat ₹500 OFF</h4><p>On orders above ₹2499</p></div>
+      <div class="voucher promo-code"><h4>Use Voucher Code</h4><p>SHEINNEW</p></div>
+    </section>
+
+    <h2 class="section-title">Shop by Mood</h2>
+    <section class="grid-5">
+      <div class="style-box"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6ba1-Xr5DOlMkrxctjJEtfQoJlmaWF1r-Ig&s" alt="Character"><span>CHARACTER</span></div>
+      <div class="style-box"><img src="https://cdn.shopify.com/s/files/1/0598/1070/9672/files/vjvnow-1_8089e9a6-d4dd-41c1-bc5c-c9d7c3d5965a_480x480.jpg?v=1723104002" alt="Casual"><span>CASUAL</span></div>
+      <div class="style-box"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTz-y2rD-dXkaX74imqKqqdwb0twFBdK4iUjQ&s" alt="Street"><span>STREET</span></div>
+      <div class="style-box"><img src="https://assets.sheinindia.in/medias/shein_sys_master/root/20250524/IDzU/6831b73d7a6cd4182f4c521d/-473Wx593H-443316618-grey-MODEL.jpg" alt="Active"><span>ACTIVE</span></div>
+      <div class="style-box"><img src="https://img.ltwebstatic.com/v4/j/pi/2025/07/22/89/175315478672327eebf29420aed03b10148124673a_thumbnail_405x552.jpg" alt="Boho"><span>BOHO</span></div>
+    </section>
+
+    <h2 class="section-title">Trending Categories</h2>
+    <section class="circle-wrap">
+      <div class="circle-card"><div class="circle-frame"><img src="https://assets.sheinindia.in/medias/shein_sys_master/root/20250524/gWMd/6831e3b455340d4b4f5074a2/-473Wx593H-443317862-white-MODEL.jpg" alt="Men"></div><p>Men</p></div>
+      <div class="circle-card"><div class="circle-frame"><img src="https://assets.sheinindia.in/medias/shein_sys_master/root/20250626/dYRc/685cecb00f920c69cc5899b4/-473Wx593H-443319914-offwhite-MODEL.jpg" alt="T-Shirts"></div><p>T-Shirts</p></div>
+      <div class="circle-card"><div class="circle-frame"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSx1QFzB4k9OiHLNPNwl8T4uSyA_RQ1qLWbvQ&s" alt="Jeans"></div><p>Jeans</p></div>
+      <div class="circle-card"><div class="circle-frame"><img src="https://assets.sheinindia.in/medias/shein_sys_master/root1/20260507/yXUe/69fc95bdfcb5bb61d2a9bd63/-473Wx593H-443396555-olive-MODEL.jpg" alt="Shirts"></div><p>Shirts</p></div>
+      <div class="circle-card"><div class="circle-frame"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIUeRLEMUIyPd8gjR41-2pkTRgXyz-GmV97A&s" alt="Trackpants"></div><p>Trackpants</p></div>
+    </section>
+
+    <h2 class="section-title">Curated Lookbooks</h2>
+    <section class="editorial-grid">
+      <div class="editorial-box"><img src="https://assets.sheinindia.in/medias/shein_sys_master/root1/20250826/onpp/68ace5cf3d468c61ab996d41/-473Wx593H-443318409-ltblue-MODEL5.jpg" alt="Retro Streetwear"><div class="meta-layer"><h3>RETRO<br>STREETWEAR</h3></div></div>
+      <div class="editorial-box"><img src="https://rukminim2.flixcart.com/image/480/640/xif0q/jean/8/h/s/32-tms-men-ice-baggy-toomes-original-imahbgymbfhrqrj3.jpeg?q=90" alt="Straight Fit Jeans"><div class="meta-layer"><h3>STRAIGHT<br>FIT JEANS</h3></div></div>
+      <div class="editorial-box"><img src="https://assets.sheinindia.in/medias/shein_sys_master/root/20250524/xDgW/6831bf9055340d4b4f5035fc/-473Wx593H-443318114-darkblue-MODEL4.jpg" alt="Earth Tones"><div class="meta-layer"><h3>EARTH<br>TONES</h3></div></div>
+    </section>
+
+    <!-- Exact Trust Icon Section Implementation -->
+    <section class="trust-strip">
+      <div class="trust-element"><span class="trust-graphics">✔️</span>ASSURED QUALITY</div>
+      <div class="trust-element"><span class="trust-graphics">↩️</span>EASY RETURNS</div>
+      <div class="trust-element"><span class="trust-graphics">🚚</span>FREE SHIPPING</div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="wrapper">
+      <div class="footer-columns">
+        <div><h4>Shein</h4><a href="#">About Shein</a><a href="#">Terms & Conditions</a><a href="#">Privacy Policy</a></div>
+        <div><h4>Help</h4><a href="#">Track Orders</a><a href="#">Returns Policy</a><a href="#">Customer Care</a></div>
+        <div><h4>Shop by</h4><a href="#">Women Hub</a><a href="#">Men Catalogue</a><a href="#">Top Offers</a></div>
+      </div>
+      <div class="footer-base">
+        <div class="footer-base">
+        <div class="footer-base-left">
+          <p>Payment methods</p>
+          <div class="gateways"><span>VISA</span><span>MASTERCARD</span><span>UPI</span><span>COD</span></div>
+        </div>
+        <div class="footer-base-right">
+          <div>© 2026 SHEIN Global Ltd. All Rights Reserved.</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
